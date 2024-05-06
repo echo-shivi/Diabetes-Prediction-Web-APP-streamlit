@@ -13,7 +13,7 @@ import requests
 
 # Function to download the trained model file from GitHub
 def download_model():
-    url = "https://github.com/echo-shivi/diabetesprediction/raw/main/trained_model.sav"
+    url = "https://github.com/echo-shivi/Diabetes-Prediction-Web-APP-streamlit/blob/main/ML/trained_model.sav"
     response = requests.get(url)
     with open("trained_model.sav", "wb") as f:
         f.write(response.content)
