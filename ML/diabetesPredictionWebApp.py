@@ -9,8 +9,23 @@ import pickle
 import streamlit as st
 from PIL import Image
 
+import requests
+
+# Function to download the trained model file from GitHub
+def download_model():
+    url = "https://github.com/echo-shivi/diabetesprediction/raw/main/trained_model.sav"
+    response = requests.get(url)
+    with open("trained_model.sav", "wb") as f:
+        f.write(response.content)
+
 # Load the trained model
-loaded_model = pickle.load(open(r'trained_model.sav', 'rb'))
+def load_model():
+    download_model()  # Download the model file if not already downloaded
+    loaded_model = pickle.load(open("trained_model.sav", "rb"))
+    return loaded_model
+
+# Load the trained model
+loaded_model = load_model()
 
 # creating a function for Prediction
 
